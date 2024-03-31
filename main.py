@@ -14,11 +14,25 @@ def filter_operation(operations_data):
     return filtered_list
 
 def sort_operations(operations_data: list[dict]) -> list[dict]:
-    sorted_list = sorted(operations_data, key=lambda x: x['data'])
+    sorted_list = sorted(operations_data, key=lambda x: x['date'])
     return sorted_list
+
+def five_last_operations(operations):
+    five_last_operations = slice(5)
+    return operations[five_last_operations]
+
+
+
 
 operations_data = open_json()
 operations = filter_operation(operations_data)
 operations = sort_operations(operations)
-for i in operations:
-    print(operations)
+five_last_o = five_last_operations(operations)
+
+
+for i in five_last_o:
+    print(i)
+
+#print(filter_operation(operations_data))
+
+
