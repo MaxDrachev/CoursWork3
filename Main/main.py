@@ -2,8 +2,8 @@ import json
 import datetime
 
 
-def open_json():
-    with open('operations.json', "r", encoding="utf-8") as file:
+def open_json(file_path):
+    with open(file_path, "r", encoding="utf-8") as file:
         return json.load(file)
 
 
@@ -54,7 +54,7 @@ def new_date(operations):
     return dt_data.strftime("%d.%m.%Y")
 
 
-operations_data = open_json()
+operations_data = open_json('../operations.json')
 operations = filter_operation(operations_data)
 operations = sort_operations(operations)
 for i in operations:
