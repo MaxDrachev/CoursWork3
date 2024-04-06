@@ -34,10 +34,10 @@ def hide_number_from(operations):
         return f"Зачисление"
 
 
-def get_amount(operations):
-    amount = operations.get('operationAmount')
-    amount_need = amount.get('amount')
-    return amount_need
+#def get_amount(operations):
+    #amount = operations.get('operationAmount')
+    #amount_need = amount.get('amount')
+    #return amount_need
 
 
 def hide_number_to(operations):
@@ -54,10 +54,10 @@ def new_date(operations):
     return dt_data.strftime("%d.%m.%Y")
 
 
-operations_data = open_json('../operations.json')
+operations_data = open_json('/Users/1/PycharmProjects/sky-python/CoursWork3/CoursWork/operations.json')
 operations = filter_operation(operations_data)
 operations = sort_operations(operations)
 for i in operations:
     print(f'{new_date(i)} {i['description']}')
     print(f'{hide_number_from(i)} -> {hide_number_to(i)}')
-    print(f'{get_amount(i)}\n')
+    print(f'{i["operationAmount"]["amount"]} {i["operationAmount"]["currency"]["name"]}\n')
